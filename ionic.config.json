@@ -1,0 +1,7 @@
+{
+  "name": "dice-roller",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
