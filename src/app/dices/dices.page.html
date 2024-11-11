@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dices</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input label="Number of Dice" type="number" [(ngModel)]="diceCount"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Dice Type" type="number" [(ngModel)]="diceType" placeholder="e.g. 6 for d6"></ion-input>
+  </ion-item>
+
+<ion-item>
+  <ion-button (click)="onRollClick()">Roll Dice</ion-button>
+</ion-item>
+
+  <div *ngIf="results">
+    <ion-card>
+      <button>aa</button>
+      <ion-item>
+        <h2>Results:</h2>
+      </ion-item>
+      <ion-item>
+        <p>Rolls: {{ results.rolls.join(', ') }}</p> 
+      </ion-item>
+      <ion-item>
+        <p>Sum: {{ results.sum }}</p>
+      </ion-item>
+    </ion-card>
+  </div>
+  <!-- Exibe o histórico -->
+  <div *ngIf="history.length > 0">
+    <ion-card>
+      <ion-item>
+        <h2>History</h2>
+      </ion-item>
+      <ion-item *ngFor="let roll of history; let i = index">
+        <p><strong>Roll {{ i + 1 }}:</strong> {{ roll.rolls.join(', ') }} (Sum: {{ roll.sum }})</p>
+      </ion-item>
+      <ion-item>
+        <ion-button color="danger" (click)="clearHistory()">Clear History</ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>
